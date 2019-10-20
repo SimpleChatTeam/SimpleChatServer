@@ -1,15 +1,20 @@
+package client;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ClientRun implements Runnable {
-
+	
+	/**
+	 * Lancement du client
+	 * @param args
+	 */
     public static void main(String[] args) {
         ClientRun clientRun = new ClientRun(new ClientImpl("localhost", 12345));
         clientRun.run();
     }
 
-    ClientImpl client;
+    private ClientImpl client;
 
     public ClientRun(ClientImpl client) {
         this.client = client;
