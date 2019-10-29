@@ -30,6 +30,11 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/OCSF.jar</systemPath>
         </dependency>
+        <dependency>
+	        <groupId>org.json</groupId>
+	        <artifactId>json</artifactId>
+	        <version>20160810</version>
+	    </dependency>
     </dependencies>
     
 </project>

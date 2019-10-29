@@ -4,8 +4,6 @@ import com.lloseng.ocsf.server.ConnectionToClient;
 
 class ServerImpl extends AbstractServer {
 	
-	private int group_id;
-	
 	/**
 	 * Création serveur
 	 * @param port : int
@@ -45,7 +43,7 @@ class ServerImpl extends AbstractServer {
     }
 
     /**
-     * Renvoie le nombre de clients connectés à chaque nouvelle connexion58
+     * Renvoie le nombre de clients connectés à chaque nouvelle connexion
      */
     protected void clientConnected(ConnectionToClient client) {
         System.out.println("Server: client #" + getNumberOfClients() + " connected");
@@ -74,7 +72,7 @@ class ServerImpl extends AbstractServer {
     
     /**
      * A la reception d'un message
-     * @param message : sting
+     * @param message : String
      * @param client : ConnectionToCLient
      */
     protected void handleMessageFromClient(Object msg, ConnectionToClient client){
