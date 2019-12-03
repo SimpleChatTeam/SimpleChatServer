@@ -12,7 +12,7 @@ public class Message {
 	
 	public Message() {}
 	
-	public Message(Object msg) {
+	Message(Object msg) {
 		try {
 			this.json = new JSONObject(msg);
 			setUser_id(json.getInt("user_id"));
@@ -27,7 +27,7 @@ public class Message {
 		return user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	private void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 
@@ -35,7 +35,7 @@ public class Message {
 		return group_id;
 	}
 
-	public void setGroup_id(int group_id) {
+	private void setGroup_id(int group_id) {
 		this.group_id = group_id;
 	}
 
@@ -43,7 +43,7 @@ public class Message {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	private void setMessage(String message) {
 		this.message = message;
 	}
 }

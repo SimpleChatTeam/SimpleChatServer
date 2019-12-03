@@ -16,7 +16,7 @@ public class ClientRun implements Runnable {
 
     private ClientImpl client;
 
-    public ClientRun(ClientImpl client) {
+    private ClientRun(ClientImpl client) {
         this.client = client;
     }
 

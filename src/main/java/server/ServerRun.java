@@ -14,7 +14,7 @@ public class ServerRun implements Runnable {
 
     private ServerImpl server;
 
-    public ServerRun(ServerImpl server) {
+    private ServerRun(ServerImpl server) {
         this.server = server;
     }
 
