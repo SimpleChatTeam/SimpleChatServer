@@ -129,6 +129,11 @@
                     <verbose>true</verbose>
                     <images>
                         <image>
+                            <external>
+                                <type>properties</type>
+                                <prefix>docker</prefix>
+                                <mode>override</mode>
+                            </external>
                             <name>ocsf-${env.GIT_BRANCH}</name>
                             <build>
                                 <from>java:8-jdk-alpine</from>
