@@ -12,6 +12,10 @@
 <!--        </repository>-->
 <!--    </repositories>-->
 
+    <properties>
+        <docker.assembly.baseDir>${project.basedir}/target</docker.assembly.baseDir>
+    </properties>
+
     <groupId>groupId</groupId>
     <artifactId>SimpleChatServer</artifactId>
     <version>1.0-SNAPSHOT</version>
