@@ -54,7 +54,7 @@
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-                    <finalName>OCSF</finalName>
+                    <finalName>${project.artifactId}-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
@@ -111,7 +111,7 @@
                                     <exec>
                                         <args>java</args>
                                         <args>-jar</args>
-                                        <args>${project.basedir}/target/OCSF.jar</args>
+                                        <args>/maven/${project.artifactId}-${project.version}.jar</args>
                                     </exec>
                                 </entryPoint>
                                 <assembly>
