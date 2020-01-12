@@ -139,11 +139,11 @@
                                 <from>java:8-jdk-alpine</from>
                                 <entryPoint>
                                     <exec>
-                                        <args>java</args>
-                                        <args>-jar</args>
-                                        <args>${project.basedir}/target/OCSF.jar</args>
-                                        <args>CMD ls -lah ${project.basedir}</args>
-                                        <args>whoami</args>
+                                        <args>CMD ls -lah</args>
+<!--                                        <args>-jar</args>-->
+<!--                                        <args>${project.basedir}/target/OCSF.jar</args>-->
+<!--                                        <args>CMD ls -lah ${project.basedir}</args>-->
+<!--                                        <args>whoami</args>-->
                                     </exec>
                                 </entryPoint>
                                 <assembly>
