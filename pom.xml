@@ -79,27 +79,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>script-chmod</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>chmod</executable>
-                            <arguments>
-<!--                                nsm ptn-->
-                                <argument>777</argument>
-                                <argument>${project.basedir}/target/${project.artifactId}-${project.version}.jar</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -128,24 +107,14 @@
                     <verbose>true</verbose>
                     <images>
                         <image>
-                            <external>
-                                <type>properties</type>
-                                <prefix>docker</prefix>
-                                <mode>override</mode>
-                            </external>
                             <name>ocsf-${env.GIT_BRANCH}</name>
                             <build>
                                 <from>java:8-jdk-alpine</from>
-<!--                                <cmd>-->
-<!--                                    <shell>ls -lah /</shell>-->
-<!--                                    <shell>ls -lah /maven</shell>-->
-<!--                                    <shell>ls -lah ${project.basedir}/target/</shell>-->
-<!--                                </cmd>-->
                                 <entryPoint>
                                     <exec>
                                         <args>java</args>
                                         <args>-jar</args>
-                                        <args>${project.basedir}/target/${project.artifactId}-${project.version}.jar</args>
+                                        <args>/maven/${project.artifactId}-${project.version}.jar</args>
                                     </exec>
                                 </entryPoint>
                                 <assembly>
