@@ -136,18 +136,18 @@
                             <name>ocsf-${env.GIT_BRANCH}</name>
                             <build>
                                 <from>java:8-jdk-alpine</from>
-                                <cmd>
-                                    <shell>ls -lah /</shell>
-                                    <shell>ls -lah /maven</shell>
-                                    <shell>ls -lah ${project.basedir}/target/</shell>
-                                </cmd>
-<!--                                <entryPoint>-->
-<!--                                    <exec>-->
-<!--                                            <args>java</args>-->
-<!--&lt;!&ndash;                                        <args>-jar</args>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <args>${project.basedir}/target/OCSF.jar</args>&ndash;&gt;-->
-<!--                                    </exec>-->
-<!--                                </entryPoint>-->
+<!--                                <cmd>-->
+<!--                                    <shell>ls -lah /</shell>-->
+<!--                                    <shell>ls -lah /maven</shell>-->
+<!--                                    <shell>ls -lah ${project.basedir}/target/</shell>-->
+<!--                                </cmd>-->
+                                <entryPoint>
+                                    <exec>
+                                        <args>java</args>
+                                        <args>-jar</args>
+                                        <args>${project.basedir}/target/${project.artifactId}-${project.version}.jar</args>
+                                    </exec>
+                                </entryPoint>
                                 <assembly>
                                     <descriptorRef>artifact-with-dependencies</descriptorRef>
                                 </assembly>
