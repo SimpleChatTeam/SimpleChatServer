@@ -144,7 +144,7 @@
                 <executions>
                     <execution>
                         <id>build</id>
-                        <phase>post-integration-test</phase>
+                        <phase>install</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
