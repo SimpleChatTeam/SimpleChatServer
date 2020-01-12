@@ -139,7 +139,7 @@
                                 <from>java:8-jdk-alpine</from>
                                 <entryPoint>
                                     <exec>
-                                        <args>CMD ls -lah</args>
+                                        <args>ls -lah</args>
 <!--                                        <args>-jar</args>-->
 <!--                                        <args>${project.basedir}/target/OCSF.jar</args>-->
 <!--                                        <args>CMD ls -lah ${project.basedir}</args>-->
