@@ -88,7 +88,8 @@
                         <configuration>
                             <executable>chmod</executable>
                             <arguments>
-                                <argument>+x</argument>
+<!--                                nsm ptn-->
+                                <argument>777</argument>
                                 <argument>${project.basedir}/target/OCSF.jar</argument>
                             </arguments>
                         </configuration>
