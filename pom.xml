@@ -78,7 +78,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>${org.codehaus.mojo.version}</version>
                 <executions>
                     <execution>
                         <id>script-chmod</id>
