@@ -138,7 +138,7 @@
                             <build>
                                 <from>java:8-jdk-alpine</from>
                                 <cmd>
-                                    <shell>ls -lah</shell>
+                                    <shell>ls -lah /</shell>
                                     <shell>ls -lah /maven</shell>
                                     <shell>ls -lah ${project.basedir}/target/</shell>
                                 </cmd>
@@ -150,7 +150,7 @@
 <!--                                    </exec>-->
 <!--                                </entryPoint>-->
                                 <assembly>
-                                    <descriptorRef>artifact</descriptorRef>
+                                    <descriptorRef>artifact-with-dependencies</descriptorRef>
                                 </assembly>
                             </build>
                         </image>
