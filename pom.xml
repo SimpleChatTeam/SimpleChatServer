@@ -4,9 +4,30 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            &lt;!&ndash; DO NOT set id to "local" because it is reserved by Maven &ndash;&gt;-->
+<!--            <id>lib</id>-->
+<!--            <url>file://${project.basedir}/src/main/resources</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+
     <groupId>groupId</groupId>
     <artifactId>SimpleChatServer</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>OCSF</groupId>
+            <artifactId>OCSF</artifactId>
+            <version>1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -15,8 +36,7 @@
                 <artifactId>maven-install-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>install</id>
-                        <phase>validate</phase>
+                        <phase>clean</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
@@ -75,57 +95,42 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.26.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <verbose>true</verbose>
-                    <images>
-                        <image>
-                            <name>ocsf-${env.GIT_BRANCH}</name>
-                            <build>
-                                <from>java:8-jdk-alpine</from>
-                                <entryPoint>
-                                    <exec>
-                                        <args>java</args>
-                                        <args>-jar</args>
-                                        <args>${project.basedir}/target/OCSF.jar</args>
-                                    </exec>
-                                </entryPoint>
-                                <assembly>
-                                    <descriptorRef>artifact</descriptorRef>
-                                </assembly>
-                            </build>
-                        </image>
-                    </images>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>build</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>io.fabric8</groupId>-->
+<!--                <artifactId>docker-maven-plugin</artifactId>-->
+<!--                <version>0.26.0</version>-->
+<!--                <extensions>true</extensions>-->
+<!--                <configuration>-->
+<!--                    <verbose>true</verbose>-->
+<!--                    <images>-->
+<!--                        <image>-->
+<!--                            <name>ocsf-${env.GIT_BRANCH}</name>-->
+<!--                            <build>-->
+<!--                                <from>java:8-jdk-alpine</from>-->
+<!--                                <entryPoint>-->
+<!--                                    <exec>-->
+<!--                                        <args>java</args>-->
+<!--                                        <args>-jar</args>-->
+<!--                                        <args>${project.basedir}/target/OCSF.jar</args>-->
+<!--                                    </exec>-->
+<!--                                </entryPoint>-->
+<!--                                <assembly>-->
+<!--                                    <descriptorRef>artifact</descriptorRef>-->
+<!--                                </assembly>-->
+<!--                            </build>-->
+<!--                        </image>-->
+<!--                    </images>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>build</id>-->
+<!--                        <phase>post-integration-test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>build</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
-         
-         
-    <dependencies>
-        <dependency>
-            <groupId>OCSF</groupId>
-            <artifactId>OCSF</artifactId>
-            <version>1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20160810</version>
-        </dependency>
-    </dependencies>
 </project>
