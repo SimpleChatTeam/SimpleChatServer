@@ -93,7 +93,7 @@
                             <arguments>
 <!--                                nsm ptn-->
                                 <argument>777</argument>
-                                <argument>${project.basedir}/target/OCSF.jar</argument>
+                                <argument>${project.basedir}/target/${project.artifactId}-${project.version}.jar</argument>
                             </arguments>
                         </configuration>
                     </execution>
