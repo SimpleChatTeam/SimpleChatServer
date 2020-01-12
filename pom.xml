@@ -30,7 +30,7 @@
                 <executions>
                     <execution>
                         <id>install</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
