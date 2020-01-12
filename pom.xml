@@ -111,7 +111,7 @@
                                     <exec>
                                         <args>java</args>
                                         <args>-jar</args>
-                                        <args>${project.basedir}/target/OCSF.jar</args>
+                                        <args>/maven/${project.artifactId}-${project.version}.jar</args>
                                     </exec>
                                 </entryPoint>
                                 <assembly>
