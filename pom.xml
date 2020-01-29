@@ -4,13 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            &lt;!&ndash; DO NOT set id to "local" because it is reserved by Maven &ndash;&gt;-->
-<!--            <id>lib</id>-->
-<!--            <url>file://${project.basedir}/src/main/resources</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <repositories>
+        <repository>
+            <id>lib</id>
+            <url>file://${project.basedir}/src/main/resources</url>
+        </repository>
+    </repositories>
 
     <properties>
         <docker.assembly.baseDir>${project.basedir}/target</docker.assembly.baseDir>
@@ -33,8 +32,14 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+            <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
@@ -98,42 +103,53 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.26.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <verbose>true</verbose>
-                    <images>
-                        <image>
-                            <name>ocsf-${env.GIT_BRANCH}</name>
-                            <build>
-                                <from>java:8-jdk-alpine</from>
-                                <entryPoint>
-                                    <exec>
-                                        <args>java</args>
-                                        <args>-jar</args>
-                                        <args>/maven/${project.artifactId}-${project.version}.jar</args>
-                                    </exec>
-                                </entryPoint>
-                                <assembly>
-                                    <descriptorRef>artifact-with-dependencies</descriptorRef>
-                                </assembly>
-                            </build>
-                        </image>
-                    </images>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>build</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+            </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>deploy</id>
+            <build>
+            <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.26.0</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <verbose>true</verbose>
+                        <images>
+                            <image>
+                                <name>ocsf-${env.GIT_BRANCH}</name>
+                                <build>
+                                    <from>java:8-jdk-alpine</from>
+                                    <entryPoint>
+                                        <exec>
+                                            <args>java</args>
+                                            <args>-jar</args>
+                                            <args>/maven/${project.artifactId}-${project.version}.jar</args>
+                                        </exec>
+                                    </entryPoint>
+                                    <assembly>
+                                        <descriptorRef>artifact-with-dependencies</descriptorRef>
+                                    </assembly>
+                                </build>
+                            </image>
+                        </images>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>build</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
+
+
