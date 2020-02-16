@@ -24,6 +24,8 @@
             <groupId>OCSF</groupId>
             <artifactId>OCSF</artifactId>
             <version>1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/OCSF.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
